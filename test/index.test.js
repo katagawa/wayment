@@ -36,5 +36,14 @@ describe('Wayment', function () {
       await A.wayment()
       expect(Date.now() - began).to.be.at.least(1000)
     })
+
+    it('should call `then` after at least 1s', async function () {
+      const began = Date.now()
+
+      this.slow(2200)
+      this.timeout(2200)
+      await A.wayment(-1)
+      expect(Date.now() - began).to.be.at.least(1000)
+    })
   })
 })
